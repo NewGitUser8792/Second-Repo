@@ -1,0 +1,88 @@
+Reading Files:
+
+example.sh
+
+ #!/bin/sh
+source include.sh
+
+greet opensource.com
+
+echo "The meaning of life is $var"
+
+
+
+
+include.sh
+
+greet() {
+    echo "Hello ${1}"
+}
+var=42
+
+
+
+Writing Data into a file:
+
+#!/bin/sh
+
+TZ=UTC
+date > date.txt
+
+
+Read.sh
+
+#!/bin/bash
+read -p "Enter file name : " filename
+while read line
+do
+echo $line
+done < $filename
+
+
+Read1.sh
+
+#! /bin/bash
+
+echo Enter the filename
+read file
+c=`cat $file | wc -c`
+w=`cat $file | wc -w`
+l=`cat $file | wc -l`
+#l=`grep -c "." $file`
+echo Number of characters in $file is $c
+echo Number of words in $file is $w
+echo Number of lines in $file is $l
+
+
+Read2.sh
+
+#! /bin/bash
+echo -e "Enter the name of the file : \c"
+read file_name
+
+if [ -d $file_name ]
+then
+   echo "$file_name is a directory"
+else
+   echo "$file_name is not a directory"
+fi
+
+
+Positional Parameters:
+
+IFS=:
+echo $0
+echo $1
+echo $2
+echo $10
+echo ${10}
+echo $*
+echo $#
+echo $@
+echo "$*"
+echo "$@"
+echo $?
+echo $$0
+unset IFS
+echo "$*"
+
